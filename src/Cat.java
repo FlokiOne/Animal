@@ -1,36 +1,36 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+public class Cat extends Animal {
+    /*
+    Тут вы видите ключевое слово super
+    super - позволяет вам обратиться к полям и методам класса родителя (Animal)
 
-public class Cat extends Animal{
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-    public void getAnimalCat() {
-        Cat cat = new Cat();
-
-        try {
-            System.out.println("Hello i'am Cat");
-            System.out.println("Give me the Name: ");
-            cat.setAnimalName(reader.readLine());
-            System.out.println("Merci, je m'appelle " + cat.animalName);
-        }catch(IOException e) {
-            System.out.println(e.getMessage());
-
-        }
-    }
-
-    @Override
-    public void getAnimalDog() {
-
-    }
-
-    @Override
+    так-как кошка наследник животного, ей доступны все поля и методы (которые не private)
+    */
     public void getAnimalName() {
-
+        System.out.println("Merci, je m'appelle " + super.animalName);
     }
 
+    /*
+    Это абстрактный метод и все наследники должны его реализовать
+    Вызов этого метода у объекта класса Cat, скажет нам, что он кот
+    У объетка класса Dog скажет, что он пес
+
+    -это уже полиморфизм "в зависимости от типа объекта, срабатывает разная реализация метода"
+    */
     @Override
-    public void getAnimalAge() {
-
+    public void getAnimalType() {
+        System.out.println("Hello I'm Cat");
     }
+
+    /*
+    Этот метод, только у кота
+    Только кот может мяукать, собака не умеет мяукать
+
+    следовательно, собака - наслежник класса животное, не видит этот метод и не может им воспользоваться
+    так же - и класс животное, ничего не знает о все, что добавляется в классах наследниках
+    классу животное, похуй что там  происходит
+    */
+    public void catVoice(){
+        System.out.println("мяу");
+    }
+
 }
